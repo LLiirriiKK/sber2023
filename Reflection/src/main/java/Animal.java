@@ -10,7 +10,7 @@ public class Animal {
     @Override
     public String toString(){
         String output;
-        output = "Animal{ " + "title: " + title + " isAvailable = " + isAvailable + " isSold = " + " photosMap = " + photosMap + " }";
+        output = "Animal{ " + "title: " + title + " isAvailable = " + isAvailable + " isSold = " + isSold + " photosMap = " + photosMap + " }";
         return output;
     }
 

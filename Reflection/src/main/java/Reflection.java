@@ -44,10 +44,9 @@ public class Reflection {
             Field petFieldPhotoList = clazzPet.getDeclaredField("photosList");
             petFieldPhotoList.setAccessible(true);
             String key, data;
-            List petValuePhotoList = (List) petFieldPhotoList.get(pet);
+            List<Pet.Photo> petValuePhotoList = (List<Pet.Photo>) petFieldPhotoList.get(pet);
             for(int i = 0; i < petValuePhotoList.size(); i++){
                 Class clazz = petValuePhotoList.get(i).getClass();
-
                 Method method = clazz.getMethod("getName");
                 key = (String) method.invoke(petValuePhotoList.get(i));
                 method = clazz.getMethod("getURL");
@@ -65,7 +64,7 @@ public class Reflection {
     }
 
     public static void main(String[] args){
-        Pet newPet = new Pet("Barsick", Pet.Status.AVAILABLE, List.of(new Pet.Photo("Barsick with flowers", "www.google.com"),
+        Pet newPet = new Pet("Barsick", Pet.Status.SOLD, List.of(new Pet.Photo("Barsick with flowers", "www.google.com"),
                                                                 new Pet.Photo("Barsick on hands", "www.google.com")));
         Animal animalNewPet = mapToProductDto(newPet);
         System.out.println(animalNewPet);
