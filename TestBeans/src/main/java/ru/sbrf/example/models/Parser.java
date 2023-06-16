@@ -1,4 +1,4 @@
-package ru.sbrf.example.Models;
+package ru.sbrf.example.models;
 
 public interface Parser {
     String next();

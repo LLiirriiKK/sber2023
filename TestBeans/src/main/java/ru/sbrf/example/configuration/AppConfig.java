@@ -1,13 +1,13 @@
-package ru.sbrf.example.Configuration;
+package ru.sbrf.example.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import ru.sbrf.example.Models.Analyzer;
-import ru.sbrf.example.Implementations.AnalyzerImpl;
-import ru.sbrf.example.Implementations.ParserTxT;
-import ru.sbrf.example.Implementations.ReportBuilderImpl;
-import ru.sbrf.example.Models.Parser;
-import ru.sbrf.example.Models.ReportBuilder;
+import ru.sbrf.example.models.Analyzer;
+import ru.sbrf.example.implementations.AnalyzerImpl;
+import ru.sbrf.example.implementations.ParserTxT;
+import ru.sbrf.example.implementations.ReportBuilderImpl;
+import ru.sbrf.example.models.Parser;
+import ru.sbrf.example.models.ReportBuilder;
 
 @Configuration
 public class AppConfig {

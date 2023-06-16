@@ -1,4 +1,4 @@
-package ru.sbrf.example.Models;
+package ru.sbrf.example.models;
 
 import java.util.Map;
 

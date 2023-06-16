@@ -1,8 +1,7 @@
-package ru.sbrf.example.Implementations;
+package ru.sbrf.example.implementations;
 
-import ru.sbrf.example.Models.Analyzer;
-import ru.sbrf.example.Models.Parser;
-import ru.sbrf.example.Models.ReportBuilder;
+import ru.sbrf.example.models.Analyzer;
+import ru.sbrf.example.models.ReportBuilder;
 
 import java.util.Map;
 

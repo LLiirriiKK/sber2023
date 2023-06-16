@@ -1,9 +1,9 @@
-package ru.sbrf.example.Application;
+package ru.sbrf.example.application;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.sbrf.example.Configuration.AppConfig;
-import ru.sbrf.example.Models.ReportBuilder;
+import ru.sbrf.example.configuration.AppConfig;
+import ru.sbrf.example.models.ReportBuilder;
 
 public class Main {
     public static void main(String[] args)  {
