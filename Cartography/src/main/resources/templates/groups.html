@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<h1><span th:text="${curGroup.nameGroup}"> </span> </h1>
+<body>
+<table>
+<tr>
+    <td>
+        <span th:text="${curGroup.groupId}"></span>
+    </td>
+    <td>
+        <span th:text="${curGroup.nameGroup}"></span>
+    </td>
+</tr>
+</table>
+
+    <form action = "@{/index/{groupId}(groupId=${group.groupId})}" method="post">
+        <input name ="albumId" placeholder="Album Id">
+        <input name="albumName" placeholder="Album name">
+        <button type="submit">Put album</button>
+    </form>
+
+
+
+</body>
+</html>

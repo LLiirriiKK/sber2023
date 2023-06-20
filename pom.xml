@@ -13,6 +13,7 @@
         <module>Reflection</module>
         <module>TestServlet</module>
         <module>TestBeans</module>
+        <module>Cartography</module>
     </modules>
 
     <properties>

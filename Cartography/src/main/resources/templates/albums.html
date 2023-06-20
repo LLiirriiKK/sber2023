@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<table>
+    <tr>
+        <td th:if="${#lists.isEmpty(allGroups)}">
+            List is empty
+        </td>
+    </tr>
+    <tr th:each="group: ${allGroups}">
+        <td>
+            <span th:text="${group.groupId}">
+            </span>
+            <span th:text="${group.nameGroup}">
+            </span>
+        </td>
+    </tr>
+</table>
+
+<br>
+<br>
+<br>
+
+<form action ="/index" method="post">
+    <input name ="groupId" placeholder="Id">
+    <input name="nameGroup" placeholder="Group name">
+    <button type="submit">Put group</button>
+</form>
+
+
+</body>
+</html>
