@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<h1>Now you are on a page of </h1>
+<h3><span th:text="${curTrack.trackName}"> </span> </h3>
+<h4> Here u can put the duration of the track</h4>
+<body>
+<table>
+    <tr>
+        <td>
+            <span th:text="${curTrack.duration}">
+            </span>
+        </td>
+    </tr>
+</table>
+
+<form th:action = "@{/index/{groupId}/albums/{albumId}/tracks/{trackId}(groupId=${curGroup.groupId}, albumId=${curAlbum.albumId}, trackId=${curTrack.trackId})}" method="post">
+    <!--        <input name ="albumId" placeholder="Album Id">-->
+    <input name="duration" th:value = "${duration}" placeholder="Duration">
+    <button type="submit">Pur duration</button>
+</form>
+
+</body>
+</html>

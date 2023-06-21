@@ -1,10 +1,24 @@
 package ru.sbrf.example.domain;
 
-public class Track {
+import jakarta.persistence.*;
 
+@Entity
+public class Track {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int trackId;
     private String trackName;
     private int duration;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Album album;
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
 
     public Track(){}
 

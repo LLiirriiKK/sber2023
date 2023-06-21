@@ -1,20 +1,48 @@
 package ru.sbrf.example.domain;
 
-import java.util.List;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Entity
 public class Album {
     private String albumName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int albumId;
     private int albumYear;
-    private List<Track> trackList;
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Track> trackSet = new HashSet<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Group group;
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public void addTrack(Track track){
+        trackSet.add(track);
+        track.setAlbum(this);
+    }
+
+    public void removeTrack(Track track){
+        trackSet.remove(track);
+        track.setAlbum(null);
+    }
 
     public Album(){}
 
-    public Album(String albumName, int albumId, int albumYear, List<Track> trackList) {
+    public Album(String albumName, int albumId, int albumYear, Set<Track> trackSet) {
         this.albumName = albumName;
         this.albumId = albumId;
         this.albumYear = albumYear;
-        this.trackList = trackList;
+        this.trackSet = trackSet;
     }
 
     public String getAlbumName() {
@@ -41,11 +69,11 @@ public class Album {
         this.albumYear = albumYear;
     }
 
-    public List<Track> getTrackList() {
-        return trackList;
+    public Set<Track> getTrackSet() {
+        return trackSet;
     }
 
-    public void setTrackList(List<Track> trackList) {
-        this.trackList = trackList;
+    public void setTrackSet(Set<Track> trackSet) {
+        this.trackSet = trackSet;
     }
 }

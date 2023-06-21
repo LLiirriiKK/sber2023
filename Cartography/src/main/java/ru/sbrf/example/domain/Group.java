@@ -1,19 +1,39 @@
 package ru.sbrf.example.domain;
 
-import java.util.List;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Entity
+@Table(name = "groupTable")
 public class Group {
     private String nameGroup;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int groupId;
-    private List<Album> albumList;
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Album> albumSet = new HashSet<>();
 
     public Group(){}
 
-    public Group(String nameGroup, int groupId, List<Album> albumList) {
+    public Group(String nameGroup, int groupId, Set<Album> albumSet) {
         this.nameGroup = nameGroup;
         this.groupId = groupId;
-        this.albumList = albumList;
+        this.albumSet = albumSet;
     }
+
+    public void addAlbum(Album album){
+        albumSet.add(album);
+        album.setGroup(this);
+    }
+
+    public void removeAlbum(Album album){
+        albumSet.remove(album);
+        album.setGroup(null);
+    }
+
 
     public String getNameGroup() {
         return nameGroup;
@@ -31,11 +51,11 @@ public class Group {
         this.groupId = groupId;
     }
 
-    public List<Album> getAlbumList() {
-        return albumList;
+    public Set<Album> getAlbumSet() {
+        return albumSet;
     }
 
-    public void setAlbumList(List<Album> albumList) {
-        this.albumList = albumList;
+    public void setAlbumSet(Set<Album> albumSet) {
+        this.albumSet = albumSet;
     }
 }

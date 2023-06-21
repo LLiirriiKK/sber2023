@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<h1>All groups:</h1>
+<h1>Now you are on a page, where u can put ur favourite musical performer</h1>
+<h3>All groups:</h3>
 <body>
 <table>
     <tr>
         <td th:if="${#lists.isEmpty(allGroups)}">
-            List is empty
+            List of groups is empty
         </td>
     </tr>
     <tr th:each="group: ${allGroups}">
@@ -16,6 +17,10 @@
             <span th:text="${group.nameGroup}">
             </span>
         </td>
+        <td>
+            <a th:href = "@{/index/{groupId}(groupId=${group.groupId})}">Open</a>
+        </td>
+
     </tr>
 </table>
 
@@ -24,7 +29,7 @@
     <br>
 
     <form action ="/index" method="post">
-        <input name ="groupId" placeholder="Id">
+<!--        <input name ="groupId" placeholder="Id">-->
         <input name="nameGroup" placeholder="Group name">
         <button type="submit">Put group</button>
     </form>

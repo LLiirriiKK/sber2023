@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+<h1>Now you are on a page of </h1>
+<h3><span th:text="${curAlbum.albumName}"> </span> </h3>
 <body>
 <table>
     <tr>
-        <td th:if="${#lists.isEmpty(allGroups)}">
-            List is empty
+        <td th:if="${#lists.isEmpty(trackList)}">
+            List of tracks is empty
         </td>
     </tr>
-    <tr th:each="group: ${allGroups}">
+    <tr th:each="track: ${trackList}">
         <td>
-            <span th:text="${group.groupId}">
+            <span th:text="${track.trackId}">
             </span>
-            <span th:text="${group.nameGroup}">
+            <span th:text="${track.trackName}">
             </span>
+        </td>
+        <td>
+            <a th:href = "@{/index/{groupId}/albums/{albumId}/tracks/{trackId}(groupId=${curGroup.groupId}, albumId=${curAlbum.albumId}, trackId=${track.trackId})}">Open</a>
         </td>
     </tr>
 </table>
 
-<br>
-<br>
-<br>
-
-<form action ="/index" method="post">
-    <input name ="groupId" placeholder="Id">
-    <input name="nameGroup" placeholder="Group name">
-    <button type="submit">Put group</button>
+<form th:action = "@{/index/{groupId}/albums/{albumId}((groupId=${curGroup.groupId}), albumId=${curAlbum.albumId})}" method="post">
+    <!--        <input name ="albumId" placeholder="Album Id">-->
+    <input name="trackName" placeholder="Track name">
+    <button type="submit">Put track</button>
 </form>
+
 
 
 </body>
