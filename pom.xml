@@ -14,6 +14,7 @@
         <module>TestServlet</module>
         <module>TestBeans</module>
         <module>Cartography</module>
+        <module>FirstFilter</module>
     </modules>
 
     <properties>
